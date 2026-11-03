@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { ArticleBody, Kicker, ReadingProgress, useReadingProgress } from "@/components/article";
-import { CommentSection } from "@/components/comments";
 import { NotFound } from "@/components/not-found";
 import { formatDate } from "@/lib/content";
 import { loadArticle } from "@/lib/folio.functions";
@@ -21,7 +20,7 @@ function NotePage() {
   return (
     <main>
       <ReadingProgress />
-      <article className="mx-auto max-w-[720px] px-5 py-12 sm:px-8 sm:py-16">
+      <article className="mx-auto max-w-[780px] px-5 py-14 sm:px-10 sm:py-20">
         <Link
           to="/notes"
           className="inline-flex h-10 items-center gap-2 text-sm font-medium text-muted hover:text-ink"
@@ -30,26 +29,20 @@ function NotePage() {
           卡片聚类
         </Link>
         <Kicker className="mt-8">{entry.clusterName}</Kicker>
-        <h1 className="mt-3 font-display text-4xl leading-[1.1] tracking-[-0.035em] text-ink sm:text-[2.8rem]">
+        <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.18] tracking-[-0.045em] text-ink sm:text-[2.8rem]">
           {entry.title}
         </h1>
-        <p className="mt-5 text-lg leading-7 text-body">{entry.dek}</p>
+        <p className="mt-6 max-w-[68ch] text-lg leading-8 text-body">{entry.dek}</p>
         <p className="mt-6 font-mono text-xs tracking-[0.08em] text-muted">
           {site.author.name} · {formatDate(entry.date)} · {entry.readingMinutes} 分钟阅读
         </p>
-        <img
-          src={entry.cover}
-          alt={entry.coverAlt}
-          className="mt-10 aspect-[16/9] w-full rounded-lg object-cover"
-        />
-        <div className="mt-10">
+        <div className="mt-12 border-t border-hairline pt-10">
           <ArticleBody blocks={entry.body} />
         </div>
-        <CommentSection slug={entry.slug} />
       </article>
       {related.length > 0 ? (
         <aside className="border-t border-hairline bg-surface-soft">
-          <div className="mx-auto grid max-w-[1120px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-2">
+          <div className="mx-auto grid max-w-[780px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-2">
             {related.map((item) => (
               <Link
                 key={item.slug}
@@ -57,11 +50,6 @@ function NotePage() {
                 params={{ slug: item.slug }}
                 className="group"
               >
-                <img
-                  src={item.cover}
-                  alt={item.coverAlt}
-                  className="aspect-[16/9] w-full rounded-lg object-cover"
-                />
                 <h2 className="mt-3 font-display text-2xl tracking-[-0.03em] text-ink group-hover:text-primary">
                   {item.title}
                 </h2>
