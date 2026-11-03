@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { ArticleBody, Kicker, ReadingProgress, useReadingProgress } from "@/components/article";
-import { CommentSection } from "@/components/comments";
 import { NotFound } from "@/components/not-found";
 import { loadArticle } from "@/lib/folio.functions";
 
@@ -20,7 +19,7 @@ function WorkPage() {
   return (
     <main>
       <ReadingProgress />
-      <article className="mx-auto max-w-[720px] px-5 py-12 sm:px-8 sm:py-16">
+      <article className="mx-auto max-w-[780px] px-5 py-14 sm:px-10 sm:py-20">
         <Link
           to="/work"
           className="inline-flex h-10 items-center gap-2 text-sm font-medium text-muted hover:text-ink"
@@ -29,10 +28,10 @@ function WorkPage() {
           作品集
         </Link>
         <Kicker className="mt-8">Case study · {work.year}</Kicker>
-        <h1 className="mt-3 font-display text-4xl leading-[1.1] tracking-[-0.035em] text-ink sm:text-5xl">
+        <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.18] tracking-[-0.045em] text-ink sm:text-5xl">
           {work.title}
         </h1>
-        <p className="mt-5 text-lg leading-7 text-body">{work.dek}</p>
+        <p className="mt-6 max-w-[68ch] text-lg leading-8 text-body">{work.dek}</p>
         <dl className="mt-8 grid grid-cols-1 gap-4 border-y border-hairline py-5 text-sm sm:grid-cols-3">
           <div>
             <dt className="text-muted">角色</dt>
@@ -47,25 +46,14 @@ function WorkPage() {
             <dd className="mt-1 text-ink">{work.outcome}</dd>
           </div>
         </dl>
-        <img
-          src={work.cover}
-          alt={work.coverAlt}
-          className="mt-10 aspect-[16/10] w-full rounded-lg object-cover"
-        />
-        <div className="mt-10">
+        <div className="mt-12 border-t border-hairline pt-10">
           <ArticleBody blocks={work.body} />
         </div>
-        <CommentSection slug={work.slug} />
       </article>
       <aside className="border-t border-hairline bg-surface-soft">
-        <div className="mx-auto grid max-w-[1120px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-[780px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-2">
           {others.map((item) => (
             <Link key={item.slug} to="/work/$slug" params={{ slug: item.slug }} className="group">
-              <img
-                src={item.cover}
-                alt={item.coverAlt}
-                className="aspect-[16/10] w-full rounded-lg object-cover"
-              />
               <p className="mt-3 text-xs tracking-[0.12em] text-muted">{item.year}</p>
               <h2 className="mt-1 font-display text-2xl tracking-[-0.03em] text-ink group-hover:text-primary">
                 {item.title}

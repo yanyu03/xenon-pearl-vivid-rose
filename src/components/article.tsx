@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 
 export function ArticleBody({ blocks }: { blocks: Block[] }) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-7 break-words [overflow-wrap:anywhere] sm:space-y-8">
       {blocks.map((block, index) => (
         <BlockView key={index} block={block} />
       ))}
@@ -15,21 +15,21 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
 function BlockView({ block }: { block: Block }) {
   switch (block.type) {
     case "p":
-      return <p className="font-sans text-[17px] leading-[1.7] text-body sm:text-[18px]">{block.text}</p>;
+      return <p className="font-sans text-[16px] leading-[1.9] tracking-[0.01em] text-body sm:text-[18px] sm:leading-[1.95]">{block.text}</p>;
     case "h2":
       return (
-        <h2 className="pt-4 font-display text-[1.65rem] leading-snug tracking-[-0.03em] text-ink sm:text-[1.85rem]">
+        <h2 className="border-t border-hairline pt-10 font-display text-[1.7rem] font-semibold leading-[1.35] tracking-[-0.035em] text-ink sm:text-[1.85rem]">
           {block.text}
         </h2>
       );
     case "h3":
       return (
-        <h3 className="pt-2 font-sans text-lg font-medium text-ink">{block.text}</h3>
+        <h3 className="pt-4 font-sans text-xl font-semibold text-ink">{block.text}</h3>
       );
     case "quote":
       return (
-        <blockquote className="border-l-2 border-primary pl-5">
-          <p className="font-display text-xl leading-snug text-ink sm:text-[1.4rem]">
+        <blockquote className="border-l-[3px] border-primary bg-surface-soft py-5 pl-6 pr-5">
+          <p className="font-display text-lg leading-[1.8] text-ink sm:text-[1.4rem]">
             {block.text}
           </p>
           {block.cite ? (
@@ -39,7 +39,7 @@ function BlockView({ block }: { block: Block }) {
       );
     case "ul":
       return (
-        <ul className="list-disc space-y-2 pl-5 text-[17px] leading-[1.7] text-body marker:text-primary">
+        <ul className="list-disc space-y-2 pl-5 text-[16px] leading-[1.9] sm:text-[18px] text-body marker:text-primary">
           {block.items.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -55,11 +55,11 @@ function BlockView({ block }: { block: Block }) {
       );
     case "code":
       return (
-        <figure className="overflow-hidden rounded-lg bg-surface-dark">
+        <figure className="overflow-hidden rounded-2xl bg-surface-dark">
           <figcaption className="flex items-center justify-between border-b border-on-dark/10 px-4 py-2 font-mono text-[11px] tracking-[0.12em] text-on-dark-soft uppercase">
             <span>{block.lang}</span>
           </figcaption>
-          <pre className="overflow-x-auto p-4 font-mono text-[13px] leading-6 text-on-dark">
+          <pre className="max-w-full overflow-x-auto p-5 font-mono text-[13px] leading-7 text-on-dark">
             <code>{block.code}</code>
           </pre>
         </figure>
@@ -81,7 +81,7 @@ function BlockView({ block }: { block: Block }) {
       );
     case "callout":
       return (
-        <aside className="rounded-lg bg-surface-card px-5 py-4 text-[16px] leading-[1.65] text-body-strong">
+        <aside className="rounded-xl border border-hairline bg-surface-soft px-6 py-5 text-[16px] leading-[1.65] text-body-strong">
           {block.text}
         </aside>
       );

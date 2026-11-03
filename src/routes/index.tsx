@@ -18,24 +18,24 @@ function Home() {
 
   return (
     <main>
-      <section className="mx-auto max-w-[1120px] px-5 pt-14 pb-12 sm:px-8 sm:pt-20 sm:pb-16">
-        <Kicker>Studio journal</Kicker>
-        <h1 className="mt-4 max-w-3xl font-display text-[2.4rem] leading-[1.08] tracking-[-0.035em] text-ink sm:text-6xl md:text-[4.1rem]">
+      <section className="relative mx-auto max-w-[1200px] overflow-hidden px-5 pt-20 pb-16 sm:px-8 sm:pt-28 sm:pb-20">
+        <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-semibold tracking-[0.12em] text-primary"><span className="size-2 rounded-full bg-primary" /> INDEPENDENT DIGITAL JOURNAL</div>
+        <h1 className="mt-4 max-w-4xl font-display text-[2.8rem] font-semibold leading-[1.12] tracking-[-0.055em] text-ink sm:text-6xl md:text-[5rem]">
           把做出来的东西，认真写下来。
         </h1>
-        <p className="mt-6 max-w-xl text-[17px] leading-7 text-body sm:text-lg">
+        <p className="mt-7 max-w-2xl text-[17px] leading-8 text-body sm:text-xl">
           {site.author.name}的{site.tagline}。不做功能清单，只留下经得起回看的作品、实验和上线记录。
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-10 flex flex-wrap gap-3">
           <Link
             to="/work"
-            className="inline-flex h-11 items-center rounded-md bg-primary px-5 text-sm font-medium text-on-primary transition-colors duration-150 hover:bg-primary-active"
+            className="inline-flex h-11 items-center rounded-full bg-primary px-7 text-sm font-medium text-on-primary transition-colors duration-150 hover:bg-primary-active"
           >
             看作品
           </Link>
           <Link
             to="/notes"
-            className="inline-flex h-11 items-center rounded-md px-5 text-sm font-medium text-ink shadow-[0_0_0_1px_var(--color-hairline)] transition-[box-shadow] duration-150 hover:shadow-[0_0_0_1px_var(--color-muted-soft)]"
+            className="inline-flex h-11 items-center rounded-full px-7 text-sm font-medium text-ink shadow-[0_0_0_1px_var(--color-hairline)] transition-[box-shadow] duration-150 hover:shadow-[0_0_0_1px_var(--color-muted-soft)]"
           >
             读笔记
           </Link>
@@ -43,19 +43,14 @@ function Home() {
       </section>
 
       {featured ? (
-      <section className="mx-auto max-w-[1120px] px-5 pb-20 sm:px-8">
+      <section className="mx-auto max-w-[1200px] px-5 pb-20 sm:px-8">
         <Link
           to="/notes/$slug"
           params={{ slug: featured.slug }}
-          className="group grid overflow-hidden rounded-xl bg-surface-card md:grid-cols-2"
+          className="editorial-card group block overflow-hidden"
         >
-          <img
-            src={featured.cover}
-            alt={featured.coverAlt}
-            className="aspect-[16/10] h-full w-full object-cover md:aspect-auto"
-          />
-          <div className="flex flex-col justify-center px-6 py-8 sm:px-10">
-            <Kicker>本期封面</Kicker>
+          <div className="flex flex-col justify-center px-7 py-10 sm:px-12">
+            <Kicker>精选文章</Kicker>
             <h2 className="mt-3 font-display text-3xl leading-tight tracking-[-0.03em] text-ink sm:text-4xl">
               {featured.title}
             </h2>
@@ -85,20 +80,13 @@ function Home() {
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {works.map((work) => (
               <Link key={work.slug} to="/work/$slug" params={{ slug: work.slug }} className="group">
-                <div className="overflow-hidden rounded-lg bg-canvas">
-                  <img
-                    src={work.cover}
-                    alt={work.coverAlt}
-                    className="aspect-[3/2] w-full object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                  />
-                </div>
-                <p className="mt-3 text-xs font-medium tracking-[0.12em] text-muted">
+                <p className="mt-5 px-2 text-xs font-medium tracking-[0.12em] text-muted">
                   {work.year} · {work.role}
                 </p>
-                <h3 className="mt-1 font-display text-2xl tracking-[-0.03em] text-ink">
+                <h3 className="mt-2 px-2 font-display text-2xl font-semibold tracking-[-0.04em] text-ink">
                   {work.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-body">{work.dek}</p>
+                <p className="mt-2 px-2 pb-4 text-sm leading-6 text-body">{work.dek}</p>
               </Link>
             ))}
           </div>
@@ -134,14 +122,9 @@ function Home() {
               to="/about"
               className="mt-8 inline-flex h-11 items-center rounded-md bg-surface-dark-elevated px-5 text-sm font-medium text-on-dark"
             >
-              关于林予
+              了解更多
             </Link>
           </div>
-          <img
-            src="/images/studio-night.jpg"
-            alt="夜晚的工作室"
-            className="aspect-[16/10] w-full rounded-lg object-cover"
-          />
         </div>
       </section>
     </main>
