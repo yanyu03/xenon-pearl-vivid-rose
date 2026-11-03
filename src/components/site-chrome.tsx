@@ -50,10 +50,10 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       >
         跳到正文
       </a>
-      <header className="sticky top-0 z-40 border-b border-hairline bg-canvas">
-        <div className="mx-auto flex h-16 max-w-[1120px] items-center justify-between px-5 sm:px-8">
-          <Link to="/" className="flex items-baseline gap-2 text-ink">
-            <span className="font-display text-[1.65rem] leading-none tracking-[-0.04em]">
+      <header className="sticky top-0 z-40 border-b border-hairline/80 bg-canvas/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 sm:px-8">
+          <Link to="/" className="flex items-baseline gap-2 text-ink transition-opacity hover:opacity-70">
+            <span className="font-display text-[1.65rem] font-bold leading-none tracking-[-0.06em]">
               {site.name}
             </span>
             <span className="hidden font-sans text-xs tracking-[0.14em] text-muted sm:inline">
@@ -68,7 +68,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
                 className={cn(
                   "relative py-2 text-sm font-medium text-muted transition-colors duration-150 hover:text-ink",
                   isActive(pathname, item.to, "exact" in item && item.exact) &&
-                    "text-ink after:absolute after:inset-x-0 after:-bottom-[1.15rem] after:h-[2px] after:bg-primary",
+                    "text-ink after:absolute after:inset-x-0 after:-bottom-[1.15rem] after:h-[3px] after:rounded-full after:bg-primary",
                 )}
               >
                 {item.label}
@@ -132,7 +132,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         <div className="border-t border-on-dark/10">
           <div className="mx-auto flex max-w-[1120px] flex-col gap-2 px-5 py-5 text-xs text-on-dark-soft sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <span>© {new Date().getFullYear()} {site.author.name}</span>
-            <span>视觉规范来自 awesome-design-md · Claude</span>
+            <span>Built for curiosity · Xblog</span>
             <Link to="/admin" className="inline-flex min-h-11 items-center text-on-dark hover:text-primary">
               后台
             </Link>
