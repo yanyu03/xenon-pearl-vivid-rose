@@ -82,7 +82,7 @@ export async function handlePagesApi(request: Request, env: PagesEnv): Promise<R
     database: env.HYPERDRIVE.database,
     port: env.HYPERDRIVE.port,
     disableEval: true,
-    dateStrings: false,
+    // Keep JSON as text for the existing D1Repository deserializer.\n    jsonStrings: true,\n    timezone: "Z",\n    dateStrings: false,
   });
   try {
     const repo = new D1Repository(database(connection));
