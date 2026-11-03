@@ -1,20 +1,8 @@
-name = "folio-api"
-main = "src/worker.ts"
-compatibility_date = "2026-03-01"
+name = "xblog-modern"
+pages_build_output_dir = ".output/public"
+compatibility_date = "2026-11-03"
+compatibility_flags = ["nodejs_compat"]
 
-# Required secrets (do not commit values):
-#   wrangler secret put ADMIN_PASSWORD
-#   wrangler secret put SESSION_SECRET     # at least 32 characters
-# Optional:
-#   wrangler secret put WEBHOOK_SECRET
-#   wrangler secret put WEBHOOK_URL        # or set as a var below
-
-[vars]
-TOKEN_TTL_SECONDS = "43200"
-# CORS_ORIGIN = "https://your-frontend.example"
-# WEBHOOK_URL = "https://example.com/hooks/folio"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "folio"
-database_id = "00000000-0000-0000-0000-000000000000"
+# Pages secrets (DATABASE_URL, ADMIN_PASSWORD, SESSION_SECRET) are configured
+# in Cloudflare dashboard; do not commit secret values here.
+# Separate legacy D1 Worker config: wrangler.worker.toml
