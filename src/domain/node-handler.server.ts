@@ -57,13 +57,13 @@ function persist(repo: MemoryRepository) {
 
 export function previewSecrets(): Secrets {
   return {
-    adminPassword: process.env.ADMIN_PASSWORD || "folio-atelier",
-    sessionSecret: process.env.SESSION_SECRET || "folio-preview-session-secret-32b!!",
+    adminPassword: process.env.ADMIN_PASSWORD || "",
+    sessionSecret: process.env.SESSION_SECRET || "",
     webhookUrl: process.env.WEBHOOK_URL || "",
     webhookSecret: process.env.WEBHOOK_SECRET || "",
     ttlSeconds: Number(process.env.TOKEN_TTL_SECONDS || 43_200),
     corsOrigin: process.env.CORS_ORIGIN || "",
-    requireSecrets: false,
+    requireSecrets: true,
   };
 }
 
