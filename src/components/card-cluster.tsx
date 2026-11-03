@@ -24,7 +24,7 @@ export function CardCluster({ clusters }: { clusters: PublicCluster[] }) {
               aria-selected={selected}
               onClick={() => setActiveId(cluster.id)}
               className={cn(
-                "rounded-lg bg-surface-card p-3 text-left transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                "rounded-2xl border border-hairline bg-surface-card p-4 text-left transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
                 selected
                   ? "shadow-[0_0_0_2px_var(--color-primary)]"
                   : "shadow-[0_0_0_1px_var(--color-hairline)] hover:-translate-y-0.5",
@@ -57,7 +57,7 @@ export function CardCluster({ clusters }: { clusters: PublicCluster[] }) {
         })}
       </div>
 
-      <div className="mt-6 rounded-xl bg-surface-soft px-4 py-5 sm:px-6 sm:py-6" role="tabpanel">
+      <div className="mt-6 rounded-[24px] border border-hairline bg-surface-soft px-4 py-5 sm:px-6 sm:py-6" role="tabpanel">
         <p className="font-display text-2xl tracking-[-0.03em] text-ink sm:text-3xl">{active.name}</p>
         <p className="mt-1 max-w-lg text-sm leading-6 text-body">{active.blurb}</p>
         {active.cards.length === 0 ? (
@@ -104,7 +104,7 @@ function CardLink({ card }: { card: PublicCard }) {
     <Link
       to={to}
       params={{ slug: card.slug }}
-      className="block overflow-hidden rounded-lg bg-canvas shadow-[0_0_0_1px_var(--color-hairline)]"
+      className="block overflow-hidden rounded-2xl bg-canvas shadow-[0_0_0_1px_var(--color-hairline)]"
     >
       <img src={card.cover} alt={card.coverAlt} className="aspect-[3/2] w-full object-cover" />
       <div className="px-3 py-3">
