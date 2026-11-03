@@ -133,9 +133,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           <div className="mx-auto flex max-w-[1120px] flex-col gap-2 px-5 py-5 text-xs text-on-dark-soft sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <span>© {new Date().getFullYear()} {site.author.name}</span>
             <span>Built for curiosity · Xblog</span>
-            <Link to="/admin" className="inline-flex min-h-11 items-center text-on-dark hover:text-primary">
-              后台
-            </Link>
+            {import.meta.env.VITE_ADMIN_ENABLED === "true" ? <Link to="/admin" className="inline-flex min-h-11 items-center text-on-dark hover:text-primary">后台</Link> : null}
           </div>
         </div>
       </footer>
