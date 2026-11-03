@@ -47,15 +47,10 @@ function Home() {
         <Link
           to="/notes/$slug"
           params={{ slug: featured.slug }}
-          className="editorial-card group grid overflow-hidden md:grid-cols-2"
+          className="editorial-card group block overflow-hidden"
         >
-          <img
-            src={featured.cover}
-            alt={featured.coverAlt}
-            className="aspect-[16/10] h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] md:aspect-auto"
-          />
           <div className="flex flex-col justify-center px-7 py-10 sm:px-12">
-            <Kicker>本期封面</Kicker>
+            <Kicker>精选文章</Kicker>
             <h2 className="mt-3 font-display text-3xl leading-tight tracking-[-0.03em] text-ink sm:text-4xl">
               {featured.title}
             </h2>
@@ -85,13 +80,6 @@ function Home() {
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {works.map((work) => (
               <Link key={work.slug} to="/work/$slug" params={{ slug: work.slug }} className="group">
-                <div className="overflow-hidden rounded-lg bg-canvas">
-                  <img
-                    src={work.cover}
-                    alt={work.coverAlt}
-                    className="aspect-[3/2] w-full object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                  />
-                </div>
                 <p className="mt-5 px-2 text-xs font-medium tracking-[0.12em] text-muted">
                   {work.year} · {work.role}
                 </p>
@@ -137,11 +125,6 @@ function Home() {
               了解更多
             </Link>
           </div>
-          <img
-            src="/images/studio-night.jpg"
-            alt="夜晚的工作室"
-            className="aspect-[16/10] w-full rounded-lg object-cover"
-          />
         </div>
       </section>
     </main>
