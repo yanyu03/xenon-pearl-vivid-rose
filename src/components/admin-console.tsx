@@ -94,8 +94,7 @@ function Login({ onToken }: { onToken: (token: string) => void }) {
         <p className="text-xs font-medium tracking-[0.14em] text-primary">FOLIO ADMIN</p>
         <h1 className="mt-3 font-display text-4xl tracking-[-0.03em] text-ink">后台</h1>
         <p className="mt-3 text-sm leading-6 text-body">
-          管理卡片聚类、公开与草稿。预览口令是 <span className="text-ink">folio-atelier</span>
-          。生产环境请设置 ADMIN_PASSWORD。
+          管理卡片聚类、公开与草稿。请使用已在 Cloudflare 配置的管理员口令；如果服务端尚未配置，请先设置 ADMIN_PASSWORD 与 SESSION_SECRET。
         </p>
         <label className="mt-6 block text-xs font-medium text-muted" htmlFor="password">
           口令
